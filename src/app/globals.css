@@ -1,0 +1,422 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* ── Background layers ── */
+  --color-background: #050508;
+  --color-surface: #10111a;
+  --color-surface-elevated: #16161f;
+
+  /* ── Borders ── */
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-subtle: #161622;
+
+  /* ── Text ── */
+  --color-foreground: #e2e8f0;
+  --color-muted-foreground: #94a3b8;
+
+  /* ── Accents ──
+     A single accent color across the portfolio (blue). The old
+     "teal" token is kept only for backwards compatibility with a
+     few components and now resolves to a neutral gray. */
+  --color-accent-indigo: #2563eb;
+  --color-accent-indigo-hover: #1d4ed8;
+  --color-accent-teal: #94a3b8;
+  --color-accent-teal-hover: #7c8aa0;
+
+  /* ── shadcn/ui compatible tokens ── */
+  --color-card: #10111a;
+  --color-card-foreground: #e2e8f0;
+  --color-popover: #16161f;
+  --color-popover-foreground: #e2e8f0;
+  --color-primary: #2563eb;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1e1e2e;
+  --color-secondary-foreground: #e2e8f0;
+  --color-muted: #1a1d2c;
+  --color-input: #1e1e2e;
+  --color-ring: #2563eb;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  /* ── Radius scale ── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* ── Base styles ── */
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─────────────────────────────────────────
+   SCROLL REVEAL
+   Elements start hidden, gain .visible via
+   IntersectionObserver in RevealOnScroll.tsx
+───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────
+   HERO — dot grid + ambient orb drift
+───────────────────────────────────────── */
+.hero-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 48px 48px;
+  animation: grid-drift 80s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+/* Floating ambient orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.12) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: orb-drift-1 25s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -80px;
+  right: -80px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: orb-drift-2 30s ease-in-out infinite;
+}
+
+.hero-orb-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 55%;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.07) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  animation: orb-drift-3 20s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.06); }
+  66%       { transform: translate(-20px, 20px) scale(0.96); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-35px, 25px) scale(1.04); }
+  70%       { transform: translate(20px, -15px) scale(0.97); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-25px, -20px); }
+}
+
+/* ─────────────────────────────────────────
+   CHIP HOVER LIFT
+───────────────────────────────────────── */
+.chip-lift {
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease, color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.chip-lift:hover {
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION — disable all decorative
+   animations for users who prefer it
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid,
+  .hero-orb-1,
+  .hero-orb-2,
+  .hero-orb-3 {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .glow-card,
+  .chip-lift {
+    transition: none;
+  }
+
+  .glow-card:hover,
+  .glow-card-teal:hover {
+    transform: none;
+  }
+
+  .chip-lift:hover {
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ─────────────────────────────────────────
+   GLASSMORPHISM
+───────────────────────────────────────── */
+.glass {
+  background: rgba(17, 17, 24, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.glass-strong {
+  background: rgba(9, 9, 15, 0.75);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ─────────────────────────────────────────
+   GRADIENT TEXT
+───────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #93b4fd 30%,
+    #2563eb 55%,
+    #93b4fd 80%,
+    #ffffff 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ─────────────────────────────────────────
+   PREMIUM GLOW BUTTON
+───────────────────────────────────────── */
+.glow-button {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.55),
+    rgba(37, 99, 235, 0.25)
+  );
+  z-index: -1;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.3s ease;
+}
+
+.glow-button:hover::after {
+  opacity: 1;
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+}
+
+/* ─────────────────────────────────────────
+   SHIMMER OVERLAY (section labels)
+───────────────────────────────────────── */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(37, 99, 235, 0.15),
+    transparent
+  );
+  animation: shimmer-sweep 4s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 200%;
+  }
+}
+
+/* ─────────────────────────────────────────
+   LANGUAGE SWITCHER DROPDOWN
+───────────────────────────────────────── */
+.lang-dropdown {
+  animation: dropdown-enter 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top right;
+}
+
+@keyframes dropdown-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────
+   HERO STAT CARDS
+───────────────────────────────────────── */
+.hero-stat {
+  animation: stat-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes stat-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION — disable premium animations
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+    -webkit-text-fill-color: #e2e8f0;
+    background: none;
+  }
+
+  .shimmer::after,
+  .hero-stat,
+  .marquee-track {
+    animation: none;
+  }
+
+  .glow-button {
+    transition: none;
+  }
+
+  .glow-button:hover {
+    transform: none;
+  }
+}
+
+/* ─────────────────────────────────────────
+   SKILLS MARQUEE
+───────────────────────────────────────── */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

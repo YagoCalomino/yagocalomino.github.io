@@ -56,7 +56,7 @@ export const projectFolders: ProjectFolder[] = [
   {
     id: "sus-flow",
     title: "SUS-Flow",
-    categoryLabel: "Full-Stack & Dados de Saúde",
+    categoryLabel: "Dados de Saúde & Back-End",
     description:
       "Sistema que digitaliza a triagem de pronto-atendimento do SUS com o Protocolo de Manchester. Dois públicos: cidadãos veem filas em tempo real via painel público e enfermeiros classificam pacientes com suporte de IA.",
     impact:
@@ -98,7 +98,8 @@ export const projectFolders: ProjectFolder[] = [
     impact:
       "Arquitetura de ingestão incremental por fonte, forecasting com AutoARIMA e Prophet para tendências temporais, e dashboards coropléticos de risco por município. Em desenvolvimento ativo. A complexidade está na normalização de dados de origens heterogêneas antes de qualquer visualização.",
     tags: ["Python", "FastAPI", "React", "PostgreSQL", "AutoARIMA", "Prophet"],
-    status: "coming-soon",
+    status: "open-source",
+    githubUrl: "https://github.com/YagoCalomino/HealthLens",
     folderColors: {
       back: "#6d28d9",
       front: "#7c3aed",

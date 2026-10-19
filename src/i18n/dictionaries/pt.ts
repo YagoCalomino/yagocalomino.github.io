@@ -10,11 +10,11 @@ export const pt: Dictionary = {
     contact: "Contato",
   },
   hero: {
-    eyebrow: "Analista de BI & Dados  ·  Gestão de Processos",
-    badge_data: "Analista de BI & Dados",
-    badge_dev: "Gestão de Processos & Projetos",
+    eyebrow: "Engenheiro de Dados · BI & Analytics",
+    badge_data: "Engenheiro de Dados",
+    badge_dev: "BI & Analytics",
     value_prop:
-      "Analiso e visualizo dados para que decisões operacionais sejam tomadas com evidências, não intuição. Trabalho com PostgreSQL, Power BI e Lean Six Sigma, com foco em análise de causa-raiz e impacto mensurável.",
+      "Construo pipelines de dados e dashboards para transformar dados brutos em métricas acionáveis. Python, PostgreSQL, Power BI — do ETL ao painel, fim a fim.",
     cta_work: "Ver Meu Trabalho",
     cta_resume: "Baixar Currículo",
     scroll: "rolar",

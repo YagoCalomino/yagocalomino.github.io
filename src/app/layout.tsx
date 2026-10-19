@@ -14,13 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yago Calomino | Data Engineer & Full-Stack Developer",
+  title: "Yago Calomino | Data Engineer · BI & Analytics",
   description:
-    "Portfolio of Yago Calomino, Data Engineer, Data Analyst, and Full-Stack Developer. Specializing in PostgreSQL, Oracle, Python, Power BI, React, Next.js, and process automation with Lean Six Sigma.",
+    "Portfolio of Yago Calomino, Data Engineer focused on BI & Analytics. Building data pipelines and dashboards with Python, PostgreSQL, Oracle and Power BI — from ETL to dashboard.",
   keywords: [
     "Data Engineer",
     "Data Analyst",
-    "Full-Stack Developer",
+    "BI & Analytics",
+    "ETL",
     "PostgreSQL",
     "Oracle",
     "Python",
@@ -33,17 +34,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Yago Calomino" }],
   openGraph: {
-    title: "Yago Calomino | Data Engineer & Full-Stack Developer",
+    title: "Yago Calomino | Data Engineer · BI & Analytics",
     description:
-      "Data Engineering, Data Analysis, and Full-Stack Development. Clean data pipelines, analytical dashboards, and production web applications.",
+      "Data Engineering and BI & Analytics. Data pipelines, ETL and analytical dashboards, end to end.",
     type: "website",
     locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yago Calomino | Data Engineer & Full-Stack Developer",
+    title: "Yago Calomino | Data Engineer · BI & Analytics",
     description:
-      "Data Engineering, Data Analysis, and Full-Stack Development.",
+      "Data Engineering and BI & Analytics. Data pipelines, ETL and analytical dashboards, end to end.",
   },
 };
 

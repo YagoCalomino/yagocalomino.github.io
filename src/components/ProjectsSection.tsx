@@ -99,7 +99,7 @@ export function ProjectsSection() {
                 categoryLabel={project.categoryLabel}
                 screenshots={project.screenshots}
                 folderColors={project.folderColors}
-                isEmpty={project.status === "coming-soon"}
+                isEmpty={project.screenshots.length === 0}
                 hiddenCardId={hiddenCards[project.id] ?? null}
                 onOpenScreenshot={(screenshotIdx, sourceRect) =>
                   openAt(projectIdx, screenshotIdx, sourceRect)
